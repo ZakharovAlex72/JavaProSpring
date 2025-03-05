@@ -13,13 +13,13 @@ public class UserDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void Create(User user){
+    public void create(User user){
         jdbcTemplate.update("INSERT INTO users (username) VALUES (?)", user.getUserName());
     }
-    public void Update(User user){
+    public void update(User user){
         jdbcTemplate.update("UPDATE users SET username = ? WHERE id = ?", user.getUserName(), user.getId());
     }
-    public void Delete(User user){
+    public void delete(User user){
         jdbcTemplate.update("DELETE FROM users WHERE id = ?", user.getId());
     }
     public User getUser(Long id) {
