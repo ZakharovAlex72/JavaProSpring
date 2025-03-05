@@ -45,7 +45,7 @@ public class UserService implements CommandLineRunner {
         System.out.println("CREATE_USER");
         findAll().forEach(System.out::println);
         System.out.println("------------------");
-        System.out.println(findUserByUsername("user007"));
+        System.out.println(findUserByUsername("user2"));
         System.out.println("FIND_USER");
         deleteUser("user1");
         System.out.println("DEL_USER");
