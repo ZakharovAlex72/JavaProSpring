@@ -5,4 +5,4 @@ create table users
 	username     varchar(255) unique
 );
 insert into users(username)
-values ("user1"),("user2");
+values ('user1'),('user2');
