@@ -1,5 +1,7 @@
 
 server:
+  servlet:
+    context-path: "/my-app"
   port: 8181
 
 spring:
