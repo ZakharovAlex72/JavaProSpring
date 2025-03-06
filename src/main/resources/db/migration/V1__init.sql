@@ -14,7 +14,7 @@ create table products
     acc varchar(25),
     balance numeric,
     type    varchar(30),
-    user_id bigserial
+    user_id bigserial references users(id)
 );
 insert into products(acc,balance,type,user_id)
 values ('40817810001',100,'CARD',2 );

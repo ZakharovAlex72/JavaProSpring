@@ -1,5 +1,6 @@
 package ru.zaharov.controller;
 
+
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.web.bind.annotation.*;
 import ru.zaharov.dto.ProductResponse;
@@ -11,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/v1")
 public class ProductController {
     private final ProductService productService;
     private final UserService userService;
@@ -20,17 +22,14 @@ public class ProductController {
         this.userService = userService;
     }
 
-    @GetMapping("/id")
-    public ProductResponse getProductById(@PathVariable("Id") Long Id){
+    @GetMapping("/product")
+    public ProductResponse getProductById(@RequestParam("Id") Long Id){
         Product product=productService.findById(Id);
-        if (product==null){
-            throw new EmptyResultDataAccessException(1);
-        }
         return new ProductResponse(Collections.singletonList(product));
-
     }
+
     @GetMapping("/user")
-    public ProductResponse findByUser(@RequestParam("userID") Long userID){
+    public ProductResponse findByUser(@RequestParam("userId") Long userID){
         List<Product> products = productService.findByUserId(userService.findById(userID));
         return new ProductResponse(products);
     }

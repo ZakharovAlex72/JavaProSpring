@@ -10,11 +10,12 @@ import ru.zaharov.repository.UserRepository;
 
 import java.util.List;
 
-@Slf4j
+//@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserService{
     private final UserRepository userRepository;
+
 
     public void createUser(String username){
         userRepository.createUser(username);

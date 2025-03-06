@@ -1,12 +1,15 @@
 package ru.zaharov.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
+@Getter
 @NoArgsConstructor
 public class Product {
     //id, номер счета, баланс, тип продукта (счет, карта), userId.
