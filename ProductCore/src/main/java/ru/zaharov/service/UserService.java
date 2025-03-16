@@ -2,15 +2,11 @@ package ru.zaharov.service;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
+import ru.zaharov.dto.NoDataFoundException;
 import ru.zaharov.entity.User;
 import ru.zaharov.repository.UserRepository;
 
-import java.util.List;
-
-//@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserService{
@@ -34,6 +30,7 @@ public class UserService{
     }
 
     public User findById(Long id){
-        return userRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return userRepository.findById(id).orElseThrow(() -> new NoDataFoundException("Клиент не найден", "NOT_FOUND"));
     }
+
 }

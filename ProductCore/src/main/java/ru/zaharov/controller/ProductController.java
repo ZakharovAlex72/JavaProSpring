@@ -1,14 +1,13 @@
 package ru.zaharov.controller;
 
 
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.web.bind.annotation.*;
 import ru.zaharov.dto.ProductResponse;
 import ru.zaharov.entity.Product;
 import ru.zaharov.service.ProductService;
 import ru.zaharov.service.UserService;
 
-import java.util.Collections;
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -23,14 +22,18 @@ public class ProductController {
     }
 
     @GetMapping("/product")
-    public ProductResponse getProductById(@RequestParam("Id") Long Id){
-        Product product=productService.findById(Id);
-        return new ProductResponse(Collections.singletonList(product));
+    public ProductResponse getProductById(@RequestParam("id") Long Id){
+        return productService.findById(Id);
     }
 
     @GetMapping("/user")
     public ProductResponse findByUser(@RequestParam("userId") Long userID){
         List<Product> products = productService.findByUserId(userService.findById(userID));
         return new ProductResponse(products);
+    }
+
+    @PostMapping(value = "/execute")
+    public void updateBalance(@RequestParam("prod_id") Long prodId, @RequestParam("balance") BigDecimal balance) {
+        productService.updateBalance(prodId, balance);
     }
 }

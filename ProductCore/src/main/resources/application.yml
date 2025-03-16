@@ -17,3 +17,10 @@ spring:
       enabled: ALWAYS
     jpa:
       show-sql: true
+
+integration:
+  client:
+    payment-client:
+      uri: http://localhost:8181
+      connect-timeout: 5s
+      read-timeout: 10s
